@@ -1,4 +1,3 @@
-/* Variables */
 :root {
     --primary-color: #64ffda;
     --secondary-color: #0a192f;
@@ -9,7 +8,6 @@
     --font-sans: 'Roboto', sans-serif;
 }
 
-/* Reset y estilos generales */
 * {
     margin: 0;
     padding: 0;
@@ -21,6 +19,11 @@ body {
     color: var(--text-color);
     background-color: var(--bg-dark);
     line-height: 1.6;
+    font-size: 18px;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
 }
 
 .container {
@@ -30,7 +33,6 @@ body {
     padding: 0 20px;
 }
 
-/* Header */
 header {
     position: fixed;
     top: 0;
@@ -49,7 +51,7 @@ nav {
 
 .logo {
     font-family: var(--font-mono);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 700;
@@ -64,7 +66,7 @@ nav {
 .nav-links a {
     color: var(--text-color);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     transition: color 0.3s;
 }
 
@@ -81,7 +83,6 @@ nav {
     cursor: pointer;
 }
 
-/* Hero Section */
 .hero {
     height: 100vh;
     display: flex;
@@ -90,13 +91,13 @@ nav {
 }
 
 .hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     margin-bottom: 20px;
     color: var(--primary-color);
 }
 
 .hero h2 {
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(1.8rem, 4vw, 3rem);
     margin-bottom: 20px;
 }
 
@@ -104,6 +105,7 @@ nav {
     max-width: 600px;
     margin-bottom: 30px;
     color: var(--text-light);
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
 }
 
 .btn {
@@ -122,13 +124,12 @@ nav {
     background: rgba(100, 255, 218, 0.1);
 }
 
-/* Secciones comunes */
 section {
     padding: 100px 0;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 50px;
     color: var(--text-color);
     position: relative;
@@ -145,7 +146,6 @@ h2::after {
     background-color: var(--primary-color);
 }
 
-/* Proyectos */
 .proyectos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -186,11 +186,13 @@ h2::after {
 .proyecto-info h3 {
     margin-bottom: 10px;
     color: var(--primary-color);
+    font-size: 1.5rem;
 }
 
 .proyecto-info p {
     margin-bottom: 15px;
     color: var(--text-light);
+    font-size: 1.1rem;
 }
 
 .tech-list {
@@ -203,7 +205,7 @@ h2::after {
 
 .tech-list li {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--text-light);
 }
 
@@ -215,7 +217,7 @@ h2::after {
 .proyecto-links a {
     color: var(--text-color);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
     transition: color 0.3s;
 }
 
@@ -227,7 +229,6 @@ h2::after {
     margin-right: 5px;
 }
 
-/* Tecnologías */
 .tech-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -247,17 +248,16 @@ h2::after {
 }
 
 .tech-item i {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 10px;
     color: var(--primary-color);
 }
 
 .tech-item span {
     display: block;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
-/* Contacto */
 .contacto {
     text-align: center;
 }
@@ -295,7 +295,6 @@ h2::after {
     color: var(--primary-color);
 }
 
-/* Footer */
 footer {
     padding: 20px 0;
     text-align: center;
@@ -303,14 +302,29 @@ footer {
 }
 
 footer p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--text-light);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
     .nav-links {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--bg-dark);
+        padding: 20px;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
     }
 
     .menu-toggle {
@@ -319,9 +333,45 @@ footer p {
 
     .hero {
         text-align: center;
+        padding-top: 60px;
     }
 
     .hero p {
         margin: 0 auto 30px;
+    }
+
+    .proyectos-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .proyecto-links a {
+        font-size: 0.9rem;
+    }
+/* Efecto spotlight mejorado */
+    .mouse-spotlight {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at var(--x) var(--y),
+            rgba(110, 72, 72, 0.05) 0%,
+            rgba(0, 0, 0, 0.95) 100%
+        );
+        pointer-events: none;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.5s ease-out;
+    }
+
+    body:hover .mouse-spotlight {
+        opacity: 1;
     }
 }
