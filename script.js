@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        menuToggle.innerHTML = navLinks.classList.contains('active') 
-            ? '<i class="fas fa-times"></i>' 
+        menuToggle.innerHTML = navLinks.classList.contains('active')
+            ? '<i class="fas fa-times"></i>'
             : '<i class="fas fa-bars"></i>';
     });
 
@@ -18,24 +18,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('mousemove', (e) => {
     const spotlight = document.querySelector('.mouse-spotlight');
-    
-    document.addEventListener('mousemove', (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-        spotlight.style.setProperty('--x', `${x}px`);
-        spotlight.style.setProperty('--y', `${y}px`);
-    });
+    const x = e.clientX + window.scrollX;
+    const y = e.clientY + window.scrollY;
+    spotlight.style.setProperty('--x', `${x}px`);
+    spotlight.style.setProperty('--y', `${y}px`);
 });
+
+window.addEventListener('load', () => {
+    const spotlight = document.querySelector('.mouse-spotlight');
+    spotlight.style.height = document.body.scrollHeight + 'px';
+});
+
+window.addEventListener('resize', () => {
+    const spotlight = document.querySelector('.mouse-spotlight');
+    spotlight.style.height = document.body.scrollHeight + 'px';
+});
+
