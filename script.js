@@ -38,3 +38,20 @@ window.addEventListener('resize', () => {
     spotlight.style.height = document.body.scrollHeight + 'px';
 });
 
+//Para dar efecto a la linea del <h2>
+
+document.addEventListener('DOMContentLoaded', () => {
+  const sectionTitles = document.querySelectorAll('h2');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.6
+  });
+
+  sectionTitles.forEach(title => observer.observe(title));
+});
