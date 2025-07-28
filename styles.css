@@ -360,6 +360,17 @@ footer p {
     .bio-img {
         max-width: 100%;
     }
+     .hero .btn {
+    margin-bottom: 15px; /* Añade espacio entre los botones */
+    display: block; /* Hace que cada botón ocupe su propia línea */
+    width: 100%; /* Opcional: hace que los botones ocupen todo el ancho */
+    text-align: center; /* Centra el texto dentro del botón */
+  }
+  
+  .hero .btn:last-child {
+    margin-bottom: 0; /* Elimina el margen inferior del último botón */
+  }
+
 }
 
 @media (max-width: 480px) {
